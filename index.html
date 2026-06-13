@@ -530,6 +530,18 @@
       opacity: 0.4;
     }
 
+    .map-embed {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border: 1px solid rgba(201, 167, 90, 0.2);
+    }
+    .map-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
     .access-dl dt {
       font-size: 0.7rem;
       letter-spacing: 0.2em;
@@ -643,7 +655,7 @@
       <p class="hero-name-sub">鷲林山</p>
       <h1 class="hero-name">常在寺</h1>
       <div class="hero-divider"></div>
-      <p class="hero-catch">斎藤家の菩提寺 ─ 日蓮宗　文明二年（1470）創建</p>
+      <p class="hero-catch">斎藤家三代の菩提寺 ─ 日蓮宗　宝徳二年（1450）創建</p>
     </div>
     <div class="hero-scroll">scroll</div>
   </section>
@@ -657,11 +669,11 @@
       <div class="about-grid">
         <div>
           <p class="section-text">
-            鷲林山常在寺は、日蓮宗の寺院であり、京都・妙覚寺の末寺として文明二年（1470年）に斎藤妙椿によって創建されました。
+            鷲林山常在寺は、日蓮宗の寺院であり、京都・妙覚寺の末寺として宝徳二年（1450年）に斎藤妙椿によって建立されました。
           </p>
           <br>
           <p class="section-text">
-            戦国の梟雄として名高い斎藤道三公とその父・長井新左衛門尉が二代にわたり美濃国を制する拠点とし、斎藤家の菩提寺として深い縁を持つ由緒ある古刹です。
+            戦国の梟雄として名高い斎藤道三公とその父・長井新左衛門尉が二代にわたり美濃国を制する拠点とした寺です。後に道三公が菩提寺と定め、以後斎藤家三代の菩提寺として深い縁を持つ由緒ある古刹です。
           </p>
           <br>
           <p class="section-text">
@@ -686,12 +698,12 @@
         <div class="bunkazai-item">
           <div class="photo-placeholder bunkazai-photo">写真（道三像）</div>
           <p class="bunkazai-name">絹本著色 斎藤道三像</p>
-          <p class="bunkazai-desc">美濃の戦国大名として知られる斎藤道三公の肖像画。精緻な筆致で描かれた貴重な遺品です。</p>
+          <p class="bunkazai-desc">美濃の戦国大名として知られる斎藤道三公の肖像画。国指定重要文化財に指定された貴重な遺品です。</p>
         </div>
         <div class="bunkazai-item">
           <div class="photo-placeholder bunkazai-photo">写真（義龍像）</div>
           <p class="bunkazai-name">絹本著色 斎藤義龍像</p>
-          <p class="bunkazai-desc">道三公の嫡男・義龍公の肖像画。親子二代の像が一寺に伝わる、全国的にも稀な例です。</p>
+          <p class="bunkazai-desc">道三公の嫡男・義龍公の肖像画。こちらも国指定重要文化財で、親子二代の像が一寺に伝わる稀有な例です。通常は複製を公開しています。</p>
         </div>
       </div>
     </div>
@@ -707,7 +719,7 @@
         <p class="gyoji-date">4月 第一土曜日</p>
         <div>
           <p class="gyoji-title">斎藤道三公 追悼式</p>
-          <p class="gyoji-note">道三公の御霊を慰める法要です。当日は拝観料が無料となります。</p>
+          <p class="gyoji-note">毎年4月の「道三まつり」にあわせて営まれる、道三公の御霊を慰める法要です。まつりの2日間は境内を無料開放しています。</p>
         </div>
       </div>
       <!-- 行事が増えたら同様の div.gyoji-item を追加 -->
@@ -750,9 +762,13 @@
       <h2 class="section-title">アクセス</h2>
       <div class="section-rule"></div>
       <div class="access-grid">
-        <div class="map-placeholder">
-          <!-- Google マップ埋め込みに差し替え可能 -->
-          地図を埋め込む
+        <div class="map-embed">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3250.9127350024532!2d136.76838601566683!3d35.43219168025324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6003a961363de98b%3A0x2c3afb0f90e403d6!2z5bi45Zyo5a-6!5e0!3m2!1sja!2sjp!4v1541563222888"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="常在寺の地図"></iframe>
         </div>
         <dl class="access-dl">
           <dt>所在地</dt>
@@ -763,10 +779,11 @@
 
           <dt>バスでのアクセス</dt>
           <dd>
-            JR岐阜駅またはN系統バス<br>
-            「本町一丁目」バス停下車<br>
-            徒歩約3分<br>
-            <span style="font-size:0.8rem; opacity:0.7;">（運賃：片道250円 ／ 約15分 ／ 約5分おきに運行）</span>
+            JR岐阜駅・名鉄岐阜駅から<br>
+            N系統（長良橋方面）または<br>
+            市内ループ左回りバス乗車<br>
+            「本町1丁目」下車 徒歩約3分<br>
+            <span style="font-size:0.8rem; opacity:0.7;">（運賃：片道250円 ／ 所要約15分 ／ 約5分おきに運行）</span>
           </dd>
 
           <dt>お車でのアクセス</dt>
