@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鷲林山 常在寺 | 岐阜市</title>
+  <style>
+    /* ===== リセット・基本 ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ===== 色パターン定義 ===== */
+    /* デフォルト: 深い墨色と金 */
+    :root {
+      --gold:    #c9a75a;
+      --gold-lt: #e8d49a;
+      --ink:     #1a1610;
+      --ink-mid: #2c2418;
+      --ink-soft:#3d3228;
+      --cream:   #f5f0e8;
+      --smoke:   #e0d8cc;
+      --red:     #8b2020;
+    }
+
+    /* パターン1: 深緑と金 */
+    html.pattern-deepgreen {
+      --gold:    #d4af37;
+      --gold-lt: #e6c860;
+      --ink:     #2d4a3a;
+      --ink-mid: #3d5a4a;
+      --ink-soft:#4d6a5a;
+      --cream:   #f5f0e8;
+      --smoke:   #e0d8cc;
+    }
+
+    /* パターン2: 深紅と白 */
+    html.pattern-deepred {
+      --gold:    #c4a76b;
+      --gold-lt: #d9b88a;
+      --ink:     #5c1a1a;
+      --ink-mid: #6c2a2a;
+      --ink-soft:#7c3a3a;
+      --cream:   #f8f8f8;
+      --smoke:   #e8e8e8;
+    }
+
+    /* パターン3: 深藍と銀 */
+    html.pattern-deepblue {
+      --gold:    #b8b8b8;
+      --gold-lt: #d0d0d0;
+      --ink:     #1a2840;
+      --ink-mid: #2a3850;
+      --ink-soft:#3a4860;
+      --cream:   #f5f0e8;
+      --smoke:   #e0d8cc;
+    }
+
+    /* パターン4: 深紫と金 */
+    html.pattern-purple {
+      --gold:    #e6c200;
+      --gold-lt: #f0d740;
+      --ink:     #3d2645;
+      --ink-mid: #4d3655;
+      --ink-soft:#5d4665;
+      --cream:   #f5f0e8;
+      --smoke:   #e0d8cc;
+    }
+
+    /* パターン5: 黒と白 */
+    html.pattern-mono {
+      --gold:    #ffffff;
+      --gold-lt: #e8e8e8;
+      --ink:     #0a0a0a;
+      --ink-mid: #1a1a1a;
+      --ink-soft:#2a2a2a;
+      --cream:   #ffffff;
+      --smoke:   #e0e0e0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: "游明朝", "Yu Mincho", "ヒラギノ明朝 ProN", "Hiragino Mincho ProN", serif;
+      line-height: 1.9;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== [REMOVE_ON_DEPLOY] テーマセレクター ===== */
+    .theme-selector {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 12px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 160px;
+    }
+
+    .theme-selector-title {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 4px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .theme-selector button {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--cream);
+      padding: 6px 10px;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 4px;
+    }
+
+    .theme-selector button:hover {
+      background: var(--gold);
+      color: var(--ink);
+    }
+
+    .theme-selector button.active {
+      background: var(--gold);
+      color: var(--ink);
+      font-weight: bold;
+    }
+    /* ===== [REMOVE_ON_DEPLOY] END ===== */
+
+    /* ===== ナビゲーション ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(26, 22, 16, 0.92);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(201, 167, 90, 0.3);
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--smoke);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ===== ヒーロー ===== */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: var(--ink-mid);
+      /* 写真が入ったら background-image: url('images/hero.jpg'); に変更 */
+    }
+
+    /* 写真未入稿用：和紋様の装飾オーバーレイ */
+    .hero-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 60%, rgba(201,167,90,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 100% 50% at 50% 100%, rgba(26,22,16,0.8) 0%, transparent 60%);
+    }
+
+    /* 四隅の角飾り */
+    .hero-bg::after {
+      content: "";
+      position: absolute;
+      inset: 2rem;
+      border: 1px solid rgba(201, 167, 90, 0.2);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-kigo {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0.85;
+    }
+
+    .hero-name-sub {
+      font-size: clamp(0.9rem, 2vw, 1.1rem);
+      letter-spacing: 0.4em;
+      color: var(--smoke);
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-name {
+      font-size: clamp(3rem, 8vw, 6rem);
+      letter-spacing: 0.2em;
+      color: var(--cream);
+      line-height: 1.1;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.8);
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.8rem auto;
+    }
+
+    .hero-catch {
+      font-size: clamp(0.85rem, 2vw, 1rem);
+      letter-spacing: 0.2em;
+      color: var(--smoke);
+      opacity: 0.9;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      opacity: 0.7;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    .hero-scroll::after {
+      content: "";
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: var(--gold);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.7; transform: translateX(-50%) translateY(0); }
+      50%       { opacity: 0.4; transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ===== 共通セクション ===== */
+    section { padding: 6rem 2rem; }
+
+    .section-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      letter-spacing: 0.15em;
+      color: var(--cream);
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    .section-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+
+    .section-text {
+      color: var(--smoke);
+      font-size: 0.95rem;
+      line-height: 2;
+    }
+
+    /* ===== 縁区切り線 ===== */
+    .kamon-divider {
+      text-align: center;
+      color: rgba(201, 167, 90, 0.3);
+      font-size: 1.4rem;
+      letter-spacing: 0.5rem;
+      margin: 0.5rem 0;
+    }
+
+    /* ===== 由緒 ===== */
+    #about {
+      background: var(--ink-mid);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* 写真プレースホルダー */
+    .photo-placeholder {
+      background: var(--ink-soft);
+      border: 1px solid rgba(201, 167, 90, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: rgba(201, 167, 90, 0.4);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      gap: 0.6rem;
+    }
+
+    .photo-placeholder::before {
+      content: "□";
+      font-size: 2rem;
+      opacity: 0.4;
+    }
+
+    .about-photo {
+      aspect-ratio: 3 / 4;
+    }
+
+    /* ===== 文化財 ===== */
+    #bunkazai {
+      background: var(--ink);
+    }
+
+    .bunkazai-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+
+    .bunkazai-item {
+      border: 1px solid rgba(201, 167, 90, 0.25);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .bunkazai-item::before {
+      content: "国指定重要文化財";
+      position: absolute;
+      top: -0.65rem;
+      left: 1.2rem;
+      background: var(--ink);
+      padding: 0 0.5rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+    }
+
+    .bunkazai-photo {
+      aspect-ratio: 4 / 3;
+      margin-bottom: 1.2rem;
+    }
+
+    .bunkazai-name {
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      color: var(--cream);
+      margin-bottom: 0.4rem;
+    }
+
+    .bunkazai-desc {
+      font-size: 0.82rem;
+      color: var(--smoke);
+      opacity: 0.8;
+    }
+
+    /* ===== 年間行事 ===== */
+    #gyoji {
+      background: var(--ink-mid);
+    }
+
+    .gyoji-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(201, 167, 90, 0.15);
+      align-items: start;
+    }
+
+    .gyoji-item:first-of-type { border-top: 1px solid rgba(201, 167, 90, 0.15); }
+
+    .gyoji-date {
+      color: var(--gold);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      padding-top: 0.15rem;
+    }
+
+    .gyoji-title {
+      font-size: 1.05rem;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+
+    .gyoji-note {
+      font-size: 0.82rem;
+      color: var(--smoke);
+      opacity: 0.8;
+    }
+
+    /* ===== 参拝案内 ===== */
+    #annai {
+      background: var(--ink);
+    }
+
+    .annai-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .annai-card {
+      background: var(--ink-mid);
+      border: 1px solid rgba(201, 167, 90, 0.2);
+      padding: 1.8rem 1.5rem;
+    }
+
+    .annai-card-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .annai-card-value {
+      font-size: 1rem;
+      color: var(--cream);
+      letter-spacing: 0.05em;
+      line-height: 1.7;
+    }
+
+    .annai-card-note {
+      font-size: 0.75rem;
+      color: var(--smoke);
+      opacity: 0.7;
+      margin-top: 0.4rem;
+    }
+
+    /* ===== アクセス ===== */
+    #access {
+      background: var(--ink-mid);
+    }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .map-placeholder {
+      aspect-ratio: 4 / 3;
+      background: var(--ink-soft);
+      border: 1px solid rgba(201, 167, 90, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      color: rgba(201, 167, 90, 0.5);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+    }
+
+    .map-placeholder::before {
+      content: "地図";
+      font-size: 2rem;
+      opacity: 0.4;
+    }
+
+    .access-dl dt {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-top: 1.4rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .access-dl dt:first-child { margin-top: 0; }
+
+    .access-dl dd {
+      font-size: 0.92rem;
+      color: var(--smoke);
+      line-height: 1.8;
+    }
+
+    /* ===== お問い合わせバナー ===== */
+    #contact {
+      background: var(--ink);
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-tel {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .contact-tel a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact-hours {
+      font-size: 0.82rem;
+      color: var(--smoke);
+      opacity: 0.7;
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== フッター ===== */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(201, 167, 90, 0.15);
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: rgba(201, 167, 90, 0.45);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+    }
+
+    /* ===== レスポンシブ ===== */
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+
+      .about-grid,
+      .bunkazai-list,
+      .annai-grid,
+      .access-grid { grid-template-columns: 1fr; }
+
+      .about-photo { aspect-ratio: 16 / 9; }
+
+      .theme-selector {
+        bottom: 10px;
+        right: 10px;
+        max-width: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- [REMOVE_ON_DEPLOY] テーマセレクター START -->
+  <div class="theme-selector">
+    <div class="theme-selector-title">色パターン</div>
+    <button class="theme-btn active" data-theme="">デフォルト</button>
+    <button class="theme-btn" data-theme="pattern-deepgreen">深緑と金</button>
+    <button class="theme-btn" data-theme="pattern-deepred">深紅と白</button>
+    <button class="theme-btn" data-theme="pattern-deepblue">深藍と銀</button>
+    <button class="theme-btn" data-theme="pattern-purple">深紫と金</button>
+    <button class="theme-btn" data-theme="pattern-mono">黒と白</button>
+  </div>
+  <!-- [REMOVE_ON_DEPLOY] END -->
+
+  <!-- ナビゲーション -->
+  <header>
+    <nav>
+      <a class="nav-logo" href="#hero">常在寺</a>
+      <ul class="nav-links">
+        <li><a href="#about">由緒</a></li>
+        <li><a href="#bunkazai">文化財</a></li>
+        <li><a href="#gyoji">行事</a></li>
+        <li><a href="#annai">参拝案内</a></li>
+        <li><a href="#access">アクセス</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ヒーロー -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-kigo">— 岐阜市 梶川町 —</p>
+      <p class="hero-name-sub">鷲林山</p>
+      <h1 class="hero-name">常在寺</h1>
+      <div class="hero-divider"></div>
+      <p class="hero-catch">斎藤家の菩提寺 ─ 日蓮宗　文明二年（1470）創建</p>
+    </div>
+    <div class="hero-scroll">scroll</div>
+  </section>
+
+  <!-- 由緒 -->
+  <section id="about">
+    <div class="section-inner">
+      <p class="section-label">About</p>
+      <h2 class="section-title">由緒</h2>
+      <div class="section-rule"></div>
+      <div class="about-grid">
+        <div>
+          <p class="section-text">
+            鷲林山常在寺は、日蓮宗の寺院であり、京都・妙覚寺の末寺として文明二年（1470年）に斎藤妙椿によって創建されました。
+          </p>
+          <br>
+          <p class="section-text">
+            戦国の梟雄として名高い斎藤道三公とその父・長井新左衛門尉が二代にわたり美濃国を制する拠点とし、斎藤家の菩提寺として深い縁を持つ由緒ある古刹です。
+          </p>
+          <br>
+          <p class="section-text">
+            境内には国指定重要文化財をはじめとする貴重な文化遺産が伝わり、岐阜の歴史を今に伝えています。
+          </p>
+        </div>
+        <div class="photo-placeholder about-photo">
+          <!-- 写真が入ったら img タグに差し替え -->
+          写真（境内・山門）
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 文化財 -->
+  <section id="bunkazai">
+    <div class="section-inner">
+      <p class="section-label">Cultural Properties</p>
+      <h2 class="section-title">文化財</h2>
+      <div class="section-rule"></div>
+      <div class="bunkazai-list">
+        <div class="bunkazai-item">
+          <div class="photo-placeholder bunkazai-photo">写真（道三像）</div>
+          <p class="bunkazai-name">絹本著色 斎藤道三像</p>
+          <p class="bunkazai-desc">美濃の戦国大名として知られる斎藤道三公の肖像画。精緻な筆致で描かれた貴重な遺品です。</p>
+        </div>
+        <div class="bunkazai-item">
+          <div class="photo-placeholder bunkazai-photo">写真（義龍像）</div>
+          <p class="bunkazai-name">絹本著色 斎藤義龍像</p>
+          <p class="bunkazai-desc">道三公の嫡男・義龍公の肖像画。親子二代の像が一寺に伝わる、全国的にも稀な例です。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 年間行事 -->
+  <section id="gyoji">
+    <div class="section-inner">
+      <p class="section-label">Annual Events</p>
+      <h2 class="section-title">年間行事</h2>
+      <div class="section-rule"></div>
+      <div class="gyoji-item">
+        <p class="gyoji-date">4月 第一土曜日</p>
+        <div>
+          <p class="gyoji-title">斎藤道三公 追悼式</p>
+          <p class="gyoji-note">道三公の御霊を慰める法要です。当日は拝観料が無料となります。</p>
+        </div>
+      </div>
+      <!-- 行事が増えたら同様の div.gyoji-item を追加 -->
+    </div>
+  </section>
+
+  <!-- 参拝案内 -->
+  <section id="annai">
+    <div class="section-inner">
+      <p class="section-label">Visitor Information</p>
+      <h2 class="section-title">参拝案内</h2>
+      <div class="section-rule"></div>
+      <div class="annai-grid">
+        <div class="annai-card">
+          <p class="annai-card-label">拝観時間</p>
+          <p class="annai-card-value">10:00 〜 16:00</p>
+          <p class="annai-card-note">不定休</p>
+        </div>
+        <div class="annai-card">
+          <p class="annai-card-label">拝観料</p>
+          <p class="annai-card-value">
+            大人　200円<br>
+            小人　100円
+          </p>
+          <p class="annai-card-note">道三公追悼式（4月第一土曜）は無料</p>
+        </div>
+        <div class="annai-card">
+          <p class="annai-card-label">駐車場</p>
+          <p class="annai-card-value">岐阜公園<br>駐車場をご利用ください</p>
+          <p class="annai-card-note">境内に専用駐車場はありません</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- アクセス -->
+  <section id="access">
+    <div class="section-inner">
+      <p class="section-label">Access</p>
+      <h2 class="section-title">アクセス</h2>
+      <div class="section-rule"></div>
+      <div class="access-grid">
+        <div class="map-placeholder">
+          <!-- Google マップ埋め込みに差し替え可能 -->
+          地図を埋め込む
+        </div>
+        <dl class="access-dl">
+          <dt>所在地</dt>
+          <dd>〒500-8009<br>岐阜県岐阜市梶川町9</dd>
+
+          <dt>電話番号</dt>
+          <dd><a href="tel:0582636632" style="color: inherit;">058-263-6632</a></dd>
+
+          <dt>バスでのアクセス</dt>
+          <dd>
+            JR岐阜駅またはN系統バス<br>
+            「本町一丁目」バス停下車<br>
+            徒歩約3分<br>
+            <span style="font-size:0.8rem; opacity:0.7;">（運賃：片道250円 ／ 約15分 ／ 約5分おきに運行）</span>
+          </dd>
+
+          <dt>お車でのアクセス</dt>
+          <dd>岐阜公園駐車場をご利用ください</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- お問い合わせ -->
+  <section id="contact">
+    <div class="contact-inner">
+      <p class="section-label" style="text-align:center;">Contact</p>
+      <h2 class="section-title">お問い合わせ</h2>
+      <div class="section-rule" style="margin: 1rem auto 2rem;"></div>
+      <p class="section-text" style="text-align:center;">法要・拝観に関するお問い合わせは、お電話にてお気軽にどうぞ。</p>
+      <p class="contact-tel"><a href="tel:0582636632">058-263-6632</a></p>
+      <p class="contact-hours">拝観時間内（10:00 〜 16:00）にお電話ください</p>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer>
+    <p>鷲林山 常在寺　〒500-8009 岐阜県岐阜市梶川町9</p>
+    <p style="margin-top:0.5rem;">© 常在寺</p>
+  </footer>
+
+  <!-- [REMOVE_ON_DEPLOY] JavaScriptテーマ切り替え START -->
+  <script>
+    // 初期化：localStorage から保存パターンを読み込み
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('josaijiTheme') || '';
+      document.documentElement.className = savedTheme;
+      updateActiveButton(savedTheme);
+    });
+
+    // テーマ切り替え関数
+    function setTheme(theme) {
+      document.documentElement.className = theme;
+      localStorage.setItem('josaijiTheme', theme);
+      updateActiveButton(theme);
+    }
+
+    // アクティブボタン更新
+    function updateActiveButton(theme) {
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.getAttribute('data-theme') === theme) {
+          btn.classList.add('active');
+        }
+      });
+    }
+
+    // ボタンイベント設定
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        setTheme(btn.getAttribute('data-theme'));
+      });
+    });
+  </script>
+  <!-- [REMOVE_ON_DEPLOY] END -->
+
+</body>
+</html>
