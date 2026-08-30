@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鷲林山 常在寺｜配色プレビュー</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap');
+
+  :root{
+    --gold:#c9a75a;
+    --gold-deep:#9a7b3a;
+    --ink:#1a1610;
+    --cream:#f5f0e8;
+    --smoke:#e0d8cc;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Zen Kaku Gothic New',sans-serif;
+    background:#141019;color:var(--cream);line-height:1.8;
+    -webkit-font-smoothing:antialiased;padding-bottom:70px;
+  }
+  .mincho{font-family:'Shippori Mincho',serif;}
+
+  header{max-width:1000px;margin:0 auto;padding:48px 24px 10px;text-align:center;}
+  header .eyebrow{font-size:.78rem;letter-spacing:.34em;color:var(--gold);margin-bottom:16px;}
+  header h1{font-family:'Shippori Mincho',serif;font-weight:700;font-size:clamp(1.5rem,3.6vw,2.2rem);letter-spacing:.09em;margin-bottom:14px;}
+  header p{font-size:.9rem;color:var(--smoke);max-width:600px;margin:0 auto;}
+
+  .controls{max-width:1000px;margin:30px auto 0;padding:0 24px;}
+  .ctl-row{margin-bottom:20px;}
+  .ctl-label{font-size:.72rem;letter-spacing:.22em;color:var(--gold);text-align:center;margin-bottom:12px;}
+  .btns{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+
+  .color-btn{
+    cursor:pointer;border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.03);color:var(--cream);
+    border-radius:40px;padding:8px 18px 8px 8px;
+    display:flex;align-items:center;gap:9px;
+    font-family:inherit;font-size:.86rem;transition:all .2s ease;
+  }
+  .color-btn .dot{width:22px;height:22px;border-radius:50%;flex:none;border:1px solid rgba(255,255,255,.3);}
+  .color-btn .cn{font-family:'Shippori Mincho',serif;font-weight:600;letter-spacing:.05em;}
+  .color-btn .ck{font-size:.66rem;opacity:.6;margin-left:2px;}
+  .color-btn:hover{border-color:var(--gold);background:rgba(201,167,90,.08);}
+  .color-btn.active{border-color:var(--gold);background:rgba(201,167,90,.16);box-shadow:0 0 0 1px var(--gold) inset;}
+
+  .dir-btn{
+    cursor:pointer;border:1px solid rgba(255,255,255,.16);
+    background:rgba(255,255,255,.03);color:var(--cream);
+    border-radius:6px;padding:11px 22px;font-family:inherit;
+    transition:all .2s ease;text-align:center;line-height:1.5;
+  }
+  .dir-btn b{font-family:'Shippori Mincho',serif;font-size:.95rem;letter-spacing:.1em;display:block;}
+  .dir-btn span{font-size:.68rem;opacity:.7;}
+  .dir-btn:hover{border-color:var(--gold);background:rgba(201,167,90,.08);}
+  .dir-btn.active{border-color:var(--gold);background:rgba(201,167,90,.16);box-shadow:0 0 0 1px var(--gold) inset;}
+
+  .stage{max-width:1000px;margin:34px auto 0;padding:0 24px;}
+  .frame{border-radius:14px;overflow:hidden;box-shadow:0 26px 70px rgba(0,0,0,.55);transition:background .45s ease;}
+  .site-nav{display:flex;align-items:center;justify-content:space-between;padding:22px 34px;transition:all .45s ease;}
+  .site-nav .brand{font-family:'Shippori Mincho',serif;font-weight:700;font-size:1.4rem;letter-spacing:.18em;transition:color .45s ease;}
+  .site-nav .nav-menu{display:flex;gap:26px;font-size:.82rem;letter-spacing:.14em;transition:color .45s ease;}
+
+  .hero{text-align:center;padding:72px 24px 64px;transition:all .45s ease;}
+  .hero .mtn{font-size:.9rem;letter-spacing:.55em;margin-bottom:22px;padding-left:.55em;transition:color .45s ease;}
+  .hero h2{font-family:'Shippori Mincho',serif;font-weight:800;font-size:clamp(2.8rem,7vw,4.4rem);letter-spacing:.22em;padding-left:.22em;line-height:1.2;margin-bottom:14px;transition:color .45s ease;}
+  .hero .en{font-size:.74rem;letter-spacing:.4em;opacity:.72;margin-bottom:34px;transition:color .45s ease;}
+  .hero .cta{display:inline-block;padding:14px 40px;border-radius:3px;font-size:.84rem;letter-spacing:.2em;transition:all .45s ease;}
+
+  .intro{padding:44px 40px 50px;transition:all .45s ease;}
+  .intro .rule{width:44px;height:2px;margin:0 auto 26px;transition:background .45s ease;}
+  .intro .lead{font-family:'Shippori Mincho',serif;font-size:1.15rem;letter-spacing:.08em;line-height:2.1;text-align:center;max-width:640px;margin:0 auto;transition:color .45s ease;}
+
+  .site-strip{display:flex;transition:all .45s ease;}
+  .site-strip .col{flex:1;text-align:center;padding:20px 8px;font-size:.8rem;letter-spacing:.14em;transition:all .45s ease;}
+
+  .caption{max-width:1000px;margin:26px auto 0;padding:0 30px;text-align:center;font-size:.82rem;color:var(--smoke);line-height:2;}
+  .caption strong{color:var(--gold);font-weight:500;}
+  .now{color:var(--gold);font-family:'Shippori Mincho',serif;letter-spacing:.08em;}
+
+  @media(max-width:620px){
+    .site-nav{padding:16px 18px;}
+    .site-nav .nav-menu{display:none;}
+    .hero{padding:52px 18px 46px;}
+    .intro{padding:34px 22px 40px;}
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="eyebrow">鷲林山 常在寺　配色プレビュー</div>
+    <h1 class="mincho">お色をお選びください</h1>
+    <p>下のボタンで「お色」と「方向性」を切り替えると、ホームページの見え方がその場で変わります。</p>
+  </header>
+
+  <div class="controls">
+    <div class="ctl-row">
+      <div class="ctl-label">■　お　色　（日本の伝統色）</div>
+      <div class="btns" id="colorBtns"></div>
+    </div>
+    <div class="ctl-row">
+      <div class="ctl-label">■　方 向 性</div>
+      <div class="btns" id="dirBtns"></div>
+    </div>
+  </div>
+
+  <div class="stage">
+    <div class="frame" id="frame">
+      <div class="site-nav" id="nav">
+        <span class="brand" id="brand">常在寺</span>
+        <span class="nav-menu" id="navmenu"><span>由緒</span><span>年中行事</span><span>永代供養</span><span>アクセス</span></span>
+      </div>
+      <div class="hero" id="hero">
+        <div class="mtn" id="mtn">鷲　林　山</div>
+        <h2 id="title">常在寺</h2>
+        <div class="en" id="en">JOZAIJI&nbsp;&nbsp;TEMPLE</div>
+        <span class="cta" id="cta">お参りのご案内</span>
+      </div>
+      <div class="intro" id="intro">
+        <div class="rule" id="rule"></div>
+        <p class="lead" id="lead">室町の世より、この地に法燈を灯しつづけて。<br>四季の移ろいとともに、どうぞお参りください。</p>
+      </div>
+      <div class="site-strip" id="strip">
+        <div class="col" id="c1">御詠歌</div>
+        <div class="col" id="c2">永代供養</div>
+        <div class="col" id="c3">お問合せ</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="caption">
+    ただいまの配色：<span class="now" id="nowLabel"></span><br>
+    いずれも仏教で尊ばれる「赤」の系統から選んだ日本の伝統色です。<strong>蘇芳</strong>は平安の世に高位の色とされました。
+  </p>
+
+<script>
+  const reds = [
+    {jp:'蘇芳',   kana:'すおう',      hex:'#8E2B2B', deep:'#6f2020'},
+    {jp:'深蘇芳', kana:'ふかすおう',  hex:'#6E2A28', deep:'#521e1c'},
+    {jp:'臙脂',   kana:'えんじ',      hex:'#A93B44', deep:'#82272f'},
+    {jp:'緋色',   kana:'ひいろ',      hex:'#C13A22', deep:'#9a2c18'},
+    {jp:'唐紅',   kana:'からくれない',hex:'#B92A45', deep:'#8f1d33'},
+    {jp:'蘇芳香', kana:'すおうこう',  hex:'#7A322C', deep:'#5c231f'},
+  ];
+  const dirs = [
+    {key:'A',  name:'A',  desc:'赤を基調に'},
+    {key:'AB', name:'AB', desc:'中間・生成り地'},
+    {key:'B',  name:'B',  desc:'白地に効き色'},
+  ];
+
+  const GOLD='#c9a75a', GOLDD='#9a7b3a', INK='#241c15', CREAM='#f6efe4';
+  let cur=0, curDir='B';
+
+  const cb=document.getElementById('colorBtns');
+  reds.forEach((c,i)=>{
+    const b=document.createElement('button');
+    b.className='color-btn'+(i===cur?' active':'');
+    b.innerHTML=`<span class="dot" style="background:${c.hex};"></span><span class="cn">${c.jp}<span class="ck">${c.kana}</span></span>`;
+    b.onclick=()=>{cur=i;render();syncBtns();};
+    cb.appendChild(b);
+  });
+  const db=document.getElementById('dirBtns');
+  dirs.forEach(d=>{
+    const b=document.createElement('button');
+    b.className='dir-btn'+(d.key===curDir?' active':'');
+    b.dataset.dir=d.key;
+    b.innerHTML=`<b>${d.name}</b><span>${d.desc}</span>`;
+    b.onclick=()=>{curDir=d.key;render();syncBtns();};
+    db.appendChild(b);
+  });
+  function syncBtns(){
+    document.querySelectorAll('.color-btn').forEach((b,i)=>b.classList.toggle('active',i===cur));
+    document.querySelectorAll('.dir-btn').forEach(b=>b.classList.toggle('active',b.dataset.dir===curDir));
+  }
+
+  function render(){
+    const c=reds[cur];
+    const frame=document.getElementById('frame'),nav=document.getElementById('nav'),
+      brand=document.getElementById('brand'),navmenu=document.getElementById('navmenu'),
+      hero=document.getElementById('hero'),mtn=document.getElementById('mtn'),
+      title=document.getElementById('title'),en=document.getElementById('en'),
+      cta=document.getElementById('cta'),intro=document.getElementById('intro'),
+      lead=document.getElementById('lead'),rule=document.getElementById('rule'),
+      strip=document.getElementById('strip'),
+      cols=[document.getElementById('c1'),document.getElementById('c2'),document.getElementById('c3')];
+
+    if(curDir==='A'){
+      frame.style.background=c.hex;
+      nav.style.background='transparent';nav.style.borderBottom='1px solid rgba(255,255,255,.18)';
+      brand.style.color=GOLD;navmenu.style.color=CREAM;
+      hero.style.background=c.hex;mtn.style.color=GOLD;title.style.color=CREAM;en.style.color=CREAM;
+      cta.style.background=GOLD;cta.style.color=c.deep;cta.style.fontWeight='700';
+      intro.style.background=c.deep;lead.style.color=CREAM;rule.style.background=GOLD;
+      strip.style.background=c.deep;
+      cols.forEach((col,i)=>{col.style.color=CREAM;col.style.borderRight=i<2?'1px solid rgba(255,255,255,.15)':'none';});
+    } else if(curDir==='AB'){
+      const kinari='#efe6d6',kinariDeep='#e6dac6';
+      frame.style.background=kinari;
+      nav.style.background=c.hex;nav.style.borderBottom='none';
+      brand.style.color=GOLD;navmenu.style.color=CREAM;
+      hero.style.background=kinari;mtn.style.color=c.hex;title.style.color=c.hex;en.style.color=GOLDD;
+      cta.style.background=c.hex;cta.style.color='#fff';cta.style.fontWeight='500';
+      intro.style.background=kinariDeep;lead.style.color=INK;rule.style.background=c.hex;
+      strip.style.background=c.deep;
+      cols.forEach((col,i)=>{col.style.color=CREAM;col.style.borderRight=i<2?'1px solid rgba(255,255,255,.2)':'none';});
+    } else {
+      const paper='#faf8f3';
+      frame.style.background=paper;
+      nav.style.background=paper;nav.style.borderBottom='2px solid '+c.hex;
+      brand.style.color=c.hex;navmenu.style.color=INK;
+      hero.style.background=paper;mtn.style.color=c.hex;title.style.color=INK;en.style.color=c.hex;
+      cta.style.background=c.hex;cta.style.color='#fff';cta.style.fontWeight='500';
+      intro.style.background='#fff';lead.style.color=INK;rule.style.background=c.hex;
+      strip.style.background=c.hex;
+      cols.forEach((col,i)=>{col.style.color='#fff';col.style.borderRight=i<2?'1px solid rgba(255,255,255,.25)':'none';});
+    }
+    const d=dirs.find(x=>x.key===curDir);
+    document.getElementById('nowLabel').textContent=`${c.jp}（${c.kana}）　${c.hex.toUpperCase()}　／　方向 ${d.name}・${d.desc}`;
+  }
+  render();
+</script>
+</body>
+</html>
