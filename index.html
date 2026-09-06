@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 
 <head>
@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>鷲林山常在寺</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 
 <body>
@@ -25,7 +24,7 @@
 
   <!-- ヒーロー画像 -->
   <section class="hero">
-    <img src="images/hero-gate.webp" alt="常在寺の山門" class="hero-image">
+    <img src="assets/img/sanmon-01.webp" alt="常在寺の山門" class="hero-image">
   </section>
 
   <!-- メインコンテンツ -->
@@ -51,7 +50,7 @@
     <section id="history" class="section">
       <div class="section-content">
         <h2 class="section-title">由緒</h2>
-        <img src="images/section-history.webp" alt="常在寺の風景" class="section-image">
+        <img src="assets/img/hondo-gaikan-02.webp" alt="庭園越しに見る本堂" class="section-image">
         <div class="text-content">
           <p>創建は1450年。鷲林山常在寺は、戦国の名将・斎藤家三代の菩提寺として歴史を重ねてまいりました。</p>
           <p>本堂には、斎藤家ゆかりの文化財が今も安置されており、訪れる人々に静かに歴史を語りかけています。</p>
@@ -64,37 +63,78 @@
       <div class="section-content">
         <h2 class="section-title">国指定重要文化財</h2>
 
+        <!--
+          画像について（2026-09-06 時点）
+          ・道三公・義龍公の画像は権利関係の確認待ちのため掲載しない。
+          ・変換済みファイルは Documents/Chisato/jozaiji-pending/（リポジトリ外）にある。
+          ・掲載可となったら assets/img/ へ移し、下の <img> のコメントを外す。
+            仕様は歴史博物館（11月3日リニューアル）の保護仕様に合わせて確定させる。
+          ・class="protected-image" は、右クリック・ドラッグ抑止を
+            このセクションだけに当てるための識別用。スクリプトは未実装。
+        -->
+
         <div class="cultural-asset-item">
-  <div class="cultural-asset-text">
-    <h3>絹本著色斎藤道三像<br><span class="asset-reading">（けんぽんちゃくしょくさいとうどうさんぞう）</span></h3>
-    <p class="asset-designation">国指定重要文化財</p>
-    <p>斎藤道三公の肖像画。原本は岐阜市歴史博物館にあり、本堂では複製を拝観いただけます。毎年の道三まつりの日には、原本が本堂に飾られます。</p>
-  </div>
-</div>
-<div class="cultural-asset-item">
-  <div class="cultural-asset-text">
-    <h3>絹本著色斎藤義龍像<br><span class="asset-reading">（けんぽんちゃくしょくさいとうよしたつぞう）</span></h3>
-    <p class="asset-designation">国指定重要文化財</p>
-    <p>道三公の子・斎藤義龍公の肖像画。こちらも原本は岐阜市歴史博物館にあり、本堂では複製を拝観いただけます。</p>
-  </div>
-</div>
+          <div class="cultural-asset-text">
+            <h3>絹本著色斎藤道三像</h3>
+            <p class="asset-reading">けんぽんちゃくしょくさいとうどうさんぞう</p>
+            <p class="asset-designation">国指定重要文化財</p>
+            <p class="asset-provenance">濃姫による寄進と伝わる</p>
+          </div>
+          <!-- 掲載可となったら有効化する
+          <div class="cultural-asset-image">
+            <img src="assets/img/kenpon-dosan.webp" alt="絹本著色斎藤道三像（複製）" width="800" loading="lazy" class="protected-image">
+          </div>
+          -->
+        </div>
+
+        <div class="cultural-asset-item">
+          <div class="cultural-asset-text">
+            <h3>絹本著色斎藤義龍像</h3>
+            <p class="asset-reading">けんぽんちゃくしょくさいとうよしたつぞう</p>
+            <p class="asset-designation">国指定重要文化財</p>
+            <p class="asset-provenance">龍興公による寄進と伝わる</p>
+          </div>
+          <!-- 掲載可となったら有効化する
+          <div class="cultural-asset-image">
+            <img src="assets/img/kenpon-yoshitatsu.webp" alt="絹本著色斎藤義龍像（複製）" width="800" loading="lazy" class="protected-image">
+          </div>
+          -->
+        </div>
+
+        <p class="asset-note">※文化財保護のため、通常は複製品を展示しております。<br>
+          実物は毎年「道三まつり」（4月第一土日）に公開しております。</p>
+      </div>
     </section>
 
     <!-- 年間行事 -->
+    <!-- 令和9年分は、この dl と #events-year の年、下の注記を差し替える -->
     <section id="events" class="section">
       <div class="section-content">
         <h2 class="section-title">年間行事</h2>
-        <p id="events-year"></p>
+        <p id="events-year">令和8年（2026年）</p>
 
-        <div id="events-body">
-          <!-- GASからの取得に失敗したときの予備の表 -->
-          <dl class="events-list">
-            <dt>1月4日（日）　11時</dt>
-            <dd><span class="event-name">新年祝祷会・文殊菩薩礼拝</span></dd>
-          </dl>
-        </div>
+        <dl class="events-list">
+          <dt>1月4日（日）　11時</dt>
+          <dd><span class="event-name">新年祝祷会・文殊菩薩礼拝</span><span class="event-reading">しんねんしゅくとうえ・もんじゅぼさつれいはい</span></dd>
+          <dt>4月4日（土）　10時</dt>
+          <dd><span class="event-name">斎藤道三公追悼法要</span><span class="event-note">※岐阜祭協賛行事</span></dd>
+          <dt>5月3日（日）　11時</dt>
+          <dd><span class="event-name">親子花まつり</span><span class="event-note">※一般の方もご参詣いただけます</span></dd>
+          <dt>7月11〜15日・8月11〜15日</dt>
+          <dd><span class="event-name">お盆棚経</span></dd>
+          <dt>7月18日（土）　10時30分</dt>
+          <dd><span class="event-name">お盆施餓鬼法要</span><span class="event-reading">ぼんせがきほうよう</span></dd>
+          <dt>9月27日（日）　11時</dt>
+          <dd><span class="event-name">お会式桜作り</span></dd>
+          <dt>10月11日（日）　11時</dt>
+          <dd><span class="event-name">お会式・お像師会</span><span class="event-reading">えしき・ぞうしえ</span></dd>
+          <dt>11月29日（日）　13時</dt>
+          <dd><span class="event-name">永代供養法要・合祀墓供養</span><span class="event-reading">えいたいくようほうよう・ごうしぼくよう</span><span class="event-note">※当日お焚き上げの受付も致します</span></dd>
+        </dl>
 
-        <ul id="events-notes"></ul>
+        <ul id="events-notes">
+          <li>お彼岸のご供養は今年度より各家対応とさせていただきます。墓前回向（15分程度）をご希望の方はお申し込みください。</li>
+        </ul>
       </div>
     </section>
 
@@ -102,7 +142,7 @@
     <section id="visit" class="section">
       <div class="section-content">
         <h2 class="section-title">お参り・拝観</h2>
-        <img src="images/building-exterior.webp" alt="本堂外観" class="section-image">
+        <img src="assets/img/hondo-gaikan-01.webp" alt="本堂外観" class="section-image">
 
         <div class="info-grid">
           <div class="info-item">
@@ -118,6 +158,9 @@
             <p>500円</p>
           </div>
         </div>
+
+        <p class="visit-note">不定休<br>
+          ※寺院行事や法要により拝観できない場合があります。あらかじめご了承ください。</p>
       </div>
     </section>
 
@@ -147,15 +190,26 @@
         <div class="access-info">
           <div class="access-item">
             <h3>公共交通機関をご利用の場合</h3>
-            <p>JR岐阜駅またはバス停「本町１丁目」下車、徒歩3分<br>
-              <small>バス運行間隔：約5分毎　片道運賃：250円</small>
-            </p>
+            <!--
+              2026-09-06：従来の記述「バス停『本町１丁目』下車、徒歩3分／約5分毎／片道250円」は
+              出典が確認できず、岐阜県観光公式サイトの常在寺のページ
+              （https://www.kankou-gifu.jp/spot/detail_5812.html）の記載とも食い違っていたため、
+              裏の取れない数値をいったん外した。同ページの記載は次のとおり。
+                ・JR岐阜駅（11・12・13番乗り場）または名鉄岐阜駅（4番乗り場）から
+                  N系統（長良橋方面）および市内ループ左回り
+                ・「岐阜公園・歴史博物館前」下車 徒歩5分
+                ・片道230円／約5分毎／所要15分
+              系統名・乗り場番号・バス停名・徒歩分数・運賃をAさんに確認のうえ差し替える。
+              ※同ページは駐車場として岐阜公園駐車場を挙げているが、当寺では使用不可のため書かない。
+              ※一方通行のため復路のバス停が異なるという情報もある（未確認）。
+            -->
+            <p>JR岐阜駅・名鉄岐阜駅から岐阜バス（長良橋方面）にご乗車ください。</p>
           </div>
         </div>
 
         <div class="access-map-section">
           <h3>駐車場のご案内</h3>
-          <img src="images/access-map.svg" alt="常在寺の駐車場と山門への案内図" class="access-map">
+          <img src="assets/img/access-map.svg" alt="常在寺の駐車場と山門への案内図" class="access-map">
           <p class="access-map-note">北東に9台、西側に3台の参拝者駐車場があります。</p>
         </div>
       </div>
@@ -172,6 +226,11 @@
             <h3>お電話</h3>
             <p class="phone">058-263-6632</p>
           </div>
+          <div class="contact-method">
+            <h3>お問い合わせフォーム</h3>
+            <!-- Google フォームの URL 確定後、下の href に差し込む -->
+            <a href="#" class="button contact-form-button">お問い合わせフォームを開く</a>
+          </div>
         </div>
       </div>
     </section>
@@ -184,82 +243,6 @@
       <p>&copy; 2026 鷲林山常在寺</p>
     </div>
   </footer>
-
-  <script>
-    (function () {
-      // GASのエンドポイントURLをここに設定してください
-      // デプロイ後に https://script.google.com/macros/s/.../exec の形式になります
-      const ENDPOINT = 'https://script.google.com/macros/s/AKfycbySVue8iAtIB-5cCYf2XFUcR2g1yLeD5FjziVlg3y2hwASgPhgxpDRP87dNGjUks0jq/exec';
-
-      if (!ENDPOINT) {
-        console.warn('年中行事：GASエンドポイントURLが設定されていません。予備の表を表示します。');
-        document.getElementById('events-year').textContent = '令和8年（2026年）';
-        return;
-      }
-
-      fetch(ENDPOINT)
-        .then(res => {
-          if (!res.ok) throw new Error('取得に失敗しました');
-          return res.json();
-        })
-        .then(data => {
-          if (!data || !data.events || data.events.length === 0) return;
-
-          const yearEl = document.getElementById('events-year');
-          if (yearEl) yearEl.textContent = '令和' + (data.year - 2018) + '年（' + data.year + '年）';
-
-          const dl = document.createElement('dl');
-          dl.className = 'events-list';
-
-          data.events.forEach(ev => {
-            const dt = document.createElement('dt');
-            dt.textContent = ev.time ? ev.date + '　' + ev.time : ev.date;
-
-            const dd = document.createElement('dd');
-
-            const name = document.createElement('span');
-            name.className = 'event-name';
-            name.textContent = ev.name;
-            dd.appendChild(name);
-
-            if (ev.reading) {
-              const rt = document.createElement('span');
-              rt.className = 'event-reading';
-              rt.textContent = ev.reading;
-              dd.appendChild(rt);
-            }
-
-            if (ev.note) {
-              const nt = document.createElement('span');
-              nt.className = 'event-note';
-              nt.textContent = ev.note;
-              dd.appendChild(nt);
-            }
-
-            dl.appendChild(dt);
-            dl.appendChild(dd);
-          });
-
-          const body = document.getElementById('events-body');
-          body.textContent = '';
-          body.appendChild(dl);
-
-          const ul = document.getElementById('events-notes');
-          if (ul && data.notes && data.notes.length > 0) {
-            ul.textContent = '';
-            data.notes.forEach(text => {
-              const li = document.createElement('li');
-              li.textContent = text;
-              ul.appendChild(li);
-            });
-          }
-        })
-        .catch(err => {
-          console.warn('年中行事の取得に失敗。予備の表を表示します。', err);
-          document.getElementById('events-year').textContent = '令和8年（2026年）';
-        });
-    })();
-  </script>
 
 </body>
 

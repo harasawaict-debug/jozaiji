@@ -1,0 +1,15 @@
+photos-original/
+CLAUDE.md
+常在寺_資料まとめ.md
+年中行事システム_仕様.md
+*.ps1
+docs/_preview/
+scripts/__pycache__/
+received/
+assets/img/*
+!assets/img/sanmon-01.webp
+!assets/img/hondo-gaikan-01.webp
+!assets/img/hondo-gaikan-02.webp
+!assets/img/access-map.svg
+docs/
+tools/

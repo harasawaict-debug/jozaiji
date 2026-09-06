@@ -239,7 +239,7 @@ body {
 
 .cultural-asset-item {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 3rem;
     align-items: center;
     margin: 3rem 0;
@@ -249,6 +249,11 @@ body {
 
 .cultural-asset-item:last-child {
     border-bottom: none;
+}
+
+/* 画像が入っている項目だけ2段組にする（画像が無い間は1段組） */
+.cultural-asset-item:has(.cultural-asset-image) {
+    grid-template-columns: 1fr 1fr;
 }
 
 .cultural-asset-image {
@@ -266,6 +271,24 @@ body {
 .cultural-asset-text h3 {
     font-size: 1.3rem;
     color: #333;
+    margin-bottom: 0.4rem;
+}
+
+.cultural-asset-text .asset-reading {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 0.8rem;
+}
+
+.cultural-asset-text .asset-designation {
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.cultural-asset-text .asset-provenance {
+    font-size: 0.85rem;
+    color: #888;
     margin-bottom: 1rem;
 }
 
@@ -279,6 +302,21 @@ body {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
+}
+
+.cultural-asset-text .asset-note,
+.visit-note {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.9;
+    margin-top: 1.5rem;
+}
+
+.asset-note {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.9;
+    margin-top: 2rem;
 }
 
 /* ========================================
