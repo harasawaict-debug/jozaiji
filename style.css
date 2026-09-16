@@ -1,8 +1,22 @@
 ﻿/* ========================================
    常在寺ホームページ スタイルシート
-   基調色：深紅（#8B3A3A）と白（#FFFFFF）
+   基調色：蘇芳（すおう）と生成り地（方向性AB／colors.html参照）
    フォント：明朝体
    ======================================== */
+
+:root {
+    --c-accent: #8E2B2B;
+    /* 蘇芳 */
+    --c-accent-deep: #6f2020;
+    /* 濃蘇芳（ホバー・地色に使う濃い方） */
+    --c-gold: #c9a75a;
+    --c-gold-deep: #9a7b3a;
+    --c-ink: #241c15;
+    --c-paper: #efe6d6;
+    /* 生成り地 */
+    --c-paper-deep: #e6dac6;
+    --c-cream: #f6efe4;
+}
 
 * {
     margin: 0;
@@ -17,8 +31,8 @@ html {
 body {
     font-family: 'Noto Serif JP', Georgia, serif;
     line-height: 1.8;
-    color: #333;
-    background-color: #fff;
+    color: var(--c-ink);
+    background-color: var(--c-paper);
 }
 
 /* ========================================
@@ -26,8 +40,8 @@ body {
    ======================================== */
 
 .header {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    background-color: var(--c-accent);
+    border-bottom: none;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -43,11 +57,36 @@ body {
     align-items: center;
 }
 
+.temple-identity {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.temple-logo {
+    width: 2.5rem;
+    height: 2.5rem;
+    flex-shrink: 0;
+}
+
+.temple-name-group {
+    display: flex;
+    flex-direction: column;
+}
+
 .temple-name {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #8B3A3A;
+    color: var(--c-gold);
     letter-spacing: 0.1em;
+}
+
+.temple-subname {
+    font-size: 0.75rem;
+    color: var(--c-cream);
+    letter-spacing: 0.05em;
+    margin-top: 0.15rem;
+    opacity: 0.85;
 }
 
 .nav {
@@ -57,7 +96,7 @@ body {
 
 .nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--c-cream);
     font-size: 0.95rem;
     transition: color 0.3s ease;
     border-bottom: 2px solid transparent;
@@ -65,25 +104,21 @@ body {
 }
 
 .nav a:hover {
-    color: #8B3A3A;
-    border-bottom-color: #8B3A3A;
+    color: var(--c-gold);
+    border-bottom-color: var(--c-gold);
 }
 
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .nav {
-        flex-direction: column;
-        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem 1.5rem;
         font-size: 0.9rem;
-        width: 100%;
-    }
-
-    .nav a {
-        display: block;
     }
 }
 
@@ -111,6 +146,79 @@ body {
     }
 }
 
+.hero-title {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 2;
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.15em;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+/* .hero-catch ── 縦書きキャッチを重ねる半透明の帯。768px未満は非表示 */
+.hero-catch {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .hero-catch {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.5rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        height: 100%;
+        padding: 2.5rem 1.5rem;
+        background-color: rgba(20, 14, 14, 0.55);
+        writing-mode: vertical-rl;
+        text-orientation: upright;
+        animation: hero-catch-fade-in 1.2s ease-out;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero-catch {
+        animation: none;
+    }
+}
+
+@keyframes hero-catch-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-catch-phrase,
+.hero-catch-name {
+    margin: 0;
+    color: #fff;
+    letter-spacing: 0.2em;
+    text-shadow: 1px 1px 0 var(--c-accent), -1px -1px 0 var(--c-accent), 1px -1px 0 var(--c-accent), -1px 1px 0 var(--c-accent), 0 2px 6px rgba(20, 14, 14, 0.6);
+}
+
+.hero-catch-phrase {
+    font-size: 1.1rem;
+    line-height: 2;
+}
+
+.hero-catch-name {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
 /* ========================================
    メインコンテンツ
    ======================================== */
@@ -128,8 +236,8 @@ body {
 .purpose-section {
     margin: 3rem 0 5rem 0;
     padding: 3rem 0;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid var(--c-paper-deep);
+    border-bottom: 1px solid var(--c-paper-deep);
 }
 
 .purpose-grid {
@@ -141,8 +249,8 @@ body {
 .purpose-card {
     padding: 2rem;
     text-align: center;
-    background-color: #fafafa;
-    border: 1px solid #e0e0e0;
+    background-color: var(--c-cream);
+    border: 1px solid var(--c-paper-deep);
     transition: box-shadow 0.3s ease;
 }
 
@@ -153,7 +261,7 @@ body {
 .purpose-card h2 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: #8B3A3A;
+    color: var(--c-accent);
 }
 
 .purpose-card p {
@@ -166,7 +274,7 @@ body {
 .button {
     display: inline-block;
     padding: 0.7rem 1.5rem;
-    background-color: #8B3A3A;
+    background-color: var(--c-accent);
     color: #fff;
     text-decoration: none;
     border: none;
@@ -177,7 +285,7 @@ body {
 }
 
 .button:hover {
-    background-color: #6b2e2e;
+    background-color: var(--c-accent-deep);
 }
 
 @media (max-width: 768px) {
@@ -204,11 +312,11 @@ body {
 .section-title {
     font-size: 2rem;
     margin-bottom: 2rem;
-    color: #333;
+    color: var(--c-ink);
     text-align: center;
     letter-spacing: 0.05em;
     padding-bottom: 1rem;
-    border-bottom: 2px solid #8B3A3A;
+    border-bottom: 2px solid var(--c-accent);
     display: inline-block;
     width: 100%;
 }
@@ -219,7 +327,7 @@ body {
     height: auto;
     display: block;
     margin: 2rem auto;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--c-paper-deep);
 }
 
 .text-content {
@@ -234,6 +342,57 @@ body {
 }
 
 /* ========================================
+   当山什宝 ── 確定分のみ画像つきカードで並べる
+   ======================================== */
+
+.treasure-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 1.5rem 0 2.5rem;
+    list-style: none;
+}
+
+@media (min-width: 640px) {
+    .treasure-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* .treasure-photo ── padding-topで比率(3:4)を固定する。aspect-ratioより互換性が高い */
+.treasure-photo {
+    position: relative;
+    width: 100%;
+    padding-top: 133.333%;
+    overflow: hidden;
+    border: 1px solid var(--c-paper-deep);
+}
+
+.treasure-photo img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* キャプションの行数が項目ごとに違っても高さが揃うよう、常に2行ぶんで揃える */
+.treasure-item p {
+    display: -webkit-box;
+    overflow: hidden;
+    margin-top: 0.6rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #666;
+    text-align: center;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+/* ========================================
    文化財セクション
    ======================================== */
 
@@ -244,7 +403,7 @@ body {
     align-items: center;
     margin: 3rem 0;
     padding: 2rem 0;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--c-paper-deep);
 }
 
 .cultural-asset-item:last-child {
@@ -265,12 +424,12 @@ body {
     max-width: 400px;
     height: auto;
     display: block;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--c-paper-deep);
 }
 
 .cultural-asset-text h3 {
     font-size: 1.3rem;
-    color: #333;
+    color: var(--c-ink);
     margin-bottom: 0.4rem;
 }
 
@@ -282,7 +441,7 @@ body {
 
 .cultural-asset-text .asset-designation {
     font-size: 0.9rem;
-    color: #333;
+    color: var(--c-ink);
     margin-bottom: 1rem;
 }
 
@@ -337,11 +496,11 @@ body {
 
 .events-list dt {
     font-weight: 600;
-    color: #8B3A3A;
+    color: var(--c-accent);
     font-size: 0.95rem;
     padding: 1rem;
-    background-color: #fafafa;
-    border-left: 4px solid #8B3A3A;
+    background-color: var(--c-cream);
+    border-left: 4px solid var(--c-accent);
     margin-top: 0.5rem;
 }
 
@@ -354,15 +513,15 @@ body {
     margin-left: 0;
     color: #666;
     font-size: 0.95rem;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
+    background-color: var(--c-cream);
+    border: 1px solid var(--c-paper-deep);
     border-top: none;
     border-left: 4px solid #ccc;
 }
 
 .event-name {
     display: block;
-    color: #333;
+    color: var(--c-ink);
     font-weight: 500;
 }
 
@@ -389,8 +548,8 @@ body {
 #events-notes li {
     padding: 0.75rem;
     margin-bottom: 0.5rem;
-    background-color: #fafafa;
-    border-left: 4px solid #8B3A3A;
+    background-color: var(--c-cream);
+    border-left: 4px solid var(--c-accent);
     font-size: 0.9rem;
     color: #666;
     line-height: 1.6;
@@ -409,14 +568,14 @@ body {
 
 .info-item {
     padding: 1.5rem;
-    background-color: #fafafa;
-    border: 1px solid #e0e0e0;
+    background-color: var(--c-cream);
+    border: 1px solid var(--c-paper-deep);
     text-align: center;
 }
 
 .info-item h3 {
     font-size: 1.1rem;
-    color: #333;
+    color: var(--c-ink);
     margin-bottom: 0.75rem;
 }
 
@@ -436,9 +595,9 @@ body {
    ======================================== */
 
 .contact-box {
-    background-color: #f5f5f5;
+    background-color: var(--c-cream);
     padding: 2rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--c-paper-deep);
     margin: 2rem 0;
     text-align: center;
 }
@@ -451,7 +610,7 @@ body {
 
 .contact-phone {
     font-size: 1.3rem;
-    color: #8B3A3A;
+    color: var(--c-accent);
     font-weight: 600;
     letter-spacing: 0.05em;
 }
@@ -461,15 +620,15 @@ body {
    ======================================== */
 
 .address-box {
-    background-color: #fafafa;
+    background-color: var(--c-cream);
     padding: 2rem;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--c-paper-deep);
     margin: 2rem 0;
 }
 
 .address-box h3 {
     font-size: 1.1rem;
-    color: #333;
+    color: var(--c-ink);
     margin-bottom: 0.75rem;
 }
 
@@ -478,15 +637,46 @@ body {
     font-size: 1rem;
 }
 
+.map-embed {
+    margin: 2rem 0;
+}
+
+.map-embed iframe {
+    display: block;
+    width: 100%;
+    height: 320px;
+    border: 1px solid var(--c-paper-deep);
+}
+
+.map-open-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    color: var(--c-accent);
+    font-size: 0.9rem;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.map-open-link:hover {
+    border-bottom-color: var(--c-accent);
+}
+
+.map-open-link svg {
+    flex-shrink: 0;
+}
+
 .access-info {
     margin-top: 2rem;
 }
 
 .access-item h3 {
     font-size: 1.1rem;
-    color: #333;
+    color: var(--c-ink);
     margin-bottom: 0.75rem;
-    border-bottom: 1px solid #8B3A3A;
+    border-bottom: 1px solid var(--c-accent);
     padding-bottom: 0.5rem;
 }
 
@@ -494,22 +684,22 @@ body {
     color: #666;
     font-size: 0.95rem;
     line-height: 1.8;
-    background-color: #fafafa;
+    background-color: var(--c-cream);
     padding: 1.5rem;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--c-paper-deep);
 }
 
 .access-map-section {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--c-paper-deep);
 }
 
 .access-map-section h3 {
     font-size: 1.1rem;
-    color: #333;
+    color: var(--c-ink);
     margin-bottom: 1.5rem;
-    border-bottom: 1px solid #8B3A3A;
+    border-bottom: 1px solid var(--c-accent);
     padding-bottom: 0.5rem;
 }
 
@@ -519,8 +709,8 @@ body {
     height: auto;
     margin: 1.5rem auto;
     display: block;
-    border: 1px solid #e0e0e0;
-    background-color: #fff;
+    border: 1px solid var(--c-paper-deep);
+    background-color: var(--c-cream);
 }
 
 .access-map-note {
@@ -543,21 +733,21 @@ body {
 
 .contact-method {
     padding: 1.5rem;
-    background-color: #fafafa;
-    border: 1px solid #e0e0e0;
+    background-color: var(--c-cream);
+    border: 1px solid var(--c-paper-deep);
 }
 
 .contact-method h3 {
     font-size: 1.1rem;
-    color: #333;
+    color: var(--c-ink);
     margin-bottom: 0.75rem;
-    border-bottom: 1px solid #8B3A3A;
+    border-bottom: 1px solid var(--c-accent);
     padding-bottom: 0.5rem;
 }
 
 .phone,
 .email {
-    color: #8B3A3A;
+    color: var(--c-accent);
     font-size: 1rem;
     font-weight: 600;
     word-break: break-all;
@@ -574,8 +764,8 @@ body {
    ======================================== */
 
 .footer {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--c-accent-deep);
+    color: var(--c-cream);
     text-align: center;
     padding: 2rem;
     margin-top: 4rem;
@@ -608,4 +798,145 @@ body {
     .temple-name {
         font-size: 1.2rem;
     }
+}
+
+/* ========================================
+   季節セクション（4枚の写真の中央に言葉を重ねる）
+   ======================================== */
+
+.season-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+        "haru  natsu"
+        "aki   fuyu";
+    gap: 2.5rem;
+    max-width: 640px;
+    margin: 2rem auto 0;
+}
+
+.season-photo--haru {
+    grid-area: haru;
+}
+
+.season-photo--natsu {
+    grid-area: natsu;
+}
+
+.season-photo--aki {
+    grid-area: aki;
+}
+
+.season-photo--fuyu {
+    grid-area: fuyu;
+}
+
+.season-photo {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+}
+
+.season-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 奇数側の2枚は楕円に切り抜く（PDFの構図に合わせる） */
+.season-photo--natsu,
+.season-photo--aki {
+    border-radius: 50%;
+}
+
+.season-copy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+/* ::before ── 文字の背後にぼかした生成り色の楕円を敷き、写真に重なっても読めるようにする */
+.season-copy::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -1.5rem;
+    background: rgba(246, 239, 228, 0.92);
+    border-radius: 50%;
+    filter: blur(18px);
+}
+
+.season-copy p {
+    margin: 0 0 0.4rem;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--c-ink);
+}
+
+.season-copy-note {
+    margin-top: 0.75rem !important;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.season-copy-name {
+    margin-top: 0.5rem !important;
+    color: var(--c-accent);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+    .season-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 320px;
+    }
+
+    .season-photo--haru {
+        order: 1;
+    }
+
+    .season-photo--natsu {
+        order: 2;
+    }
+
+    .season-copy {
+        order: 3;
+        padding: 0.5rem 1rem;
+        transform: none;
+        position: static;
+    }
+
+    .season-copy::before {
+        content: none;
+    }
+
+    .season-photo--aki {
+        order: 4;
+    }
+
+    .season-photo--fuyu {
+        order: 5;
+    }
+}
+
+/* ========================================
+   クロージング
+   ======================================== */
+
+.closing-copy {
+    text-align: center;
+}
+
+.closing-line {
+    margin-top: 1.5rem !important;
+    font-size: 1.1rem;
 }

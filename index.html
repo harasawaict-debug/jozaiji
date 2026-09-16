@@ -13,7 +13,13 @@
   <!-- ナビゲーション -->
   <header class="header">
     <div class="header-content">
-      <div class="temple-name">鷲林山常在寺</div>
+      <div class="temple-identity">
+        <img src="assets/img/logo-placeholder.svg" alt="" class="temple-logo">
+        <div class="temple-name-group">
+          <p class="temple-name">鷲林山常在寺</p>
+          <p class="temple-subname">斎藤道三公菩提所</p>
+        </div>
+      </div>
       <nav class="nav">
         <a href="#visit">お参り・拝観</a>
         <a href="#consultation">ご供養のご相談</a>
@@ -26,6 +32,11 @@
   <!-- ヒーロー画像 -->
   <section class="hero">
     <img src="assets/img/hero-naijin-01.webp" alt="常在寺の内陣" class="hero-image">
+    <h1 class="hero-title">鷲林山 常在寺</h1>
+    <div class="hero-catch">
+      <p class="hero-catch-phrase">歴史をつなぎ<br>心をつなぐ</p>
+      <p class="hero-catch-name">常在寺</p>
+    </div>
   </section>
 
   <!-- メインコンテンツ -->
@@ -36,6 +47,9 @@
       <div class="text-content">
         <p>常在寺が大切にしているのは、歴史だけではございません。</p>
         <p>昔も今も 心を鎮め 誰かを想い 自分自身に向き合える場所でありたいと願っております。</p>
+        <p>室町時代より岐阜の地に寄り添い、人々の祈りを受け継いできた常在寺。</p>
+        <p>斎藤道三公ゆかりの寺として歴史を今に伝えながら私たちは何よりも人と人とのご縁を大切にしております。</p>
+        <p>ふと立ち寄るひとときも、手を合わせる時間もご縁のはじまり…どうぞ、静かな時間をお過ごしにお越しください。</p>
       </div>
     </div>
 
@@ -67,14 +81,46 @@
       </div>
     </section>
 
+    <!-- お参り・拝観 -->
+    <section id="visit" class="section">
+      <div class="section-content">
+        <h2 class="section-title">お参り・拝観</h2>
+        <img src="assets/img/hondo-yane-06.webp " alt="本堂屋根" class="section-image">
+
+        <div class="text-content">
+          <p>歴史好きな方に、初めて訪れる方にも ゆったりとした時間をお過ごしいただければと願っております。</p>
+          <p>常在寺は これからも この地で みなさまとの出会いを大切に祈りをつなげてまいります。</p>
+          <p>今日のご縁が明日のご縁へ</p>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <h3>拝観時間</h3>
+            <p>10:00～16:00</p>
+          </div>
+          <div class="info-item">
+            <h3>拝観料</h3>
+            <p>大人200円　小人100円</p>
+          </div>
+          <div class="info-item">
+            <h3>御朱印</h3>
+            <p>500円</p>
+          </div>
+        </div>
+
+        <p class="visit-note">不定休<br>
+          ※寺院行事や法要により拝観できない場合があります。あらかじめご了承ください。</p>
+      </div>
+    </section>
+
     <!-- 文化財 -->
     <section id="cultural-assets" class="section">
       <div class="section-content">
         <h2 class="section-title">国指定重要文化財</h2>
 
         <!--
-          画像について（2026-09-06 時点）
-          ・道三公・義龍公の画像は権利関係の確認待ちのため掲載しない。
+          画像について（2026-09-09 時点）
+          ・道三公・義龍公の画像は assets/img/ に未配置（ちさとが jozaiji-pending/ から移す予定）。
           ・変換済みファイルは Documents/Chisato/jozaiji-pending/（リポジトリ外）にある。
           ・掲載可となったら assets/img/ へ移し、下の <img> のコメントを外す。
             仕様は歴史博物館（11月3日リニューアル）の保護仕様に合わせて確定させる。
@@ -115,6 +161,34 @@
 
         <div class="text-content">
           <h3>当山什宝</h3>
+
+          <ul class="treasure-grid">
+            <li class="treasure-item">
+              <div class="treasure-photo">
+                <img src="assets/img/homotsu-ihai-01.webp" alt="道三公ほか斎藤家御位牌" loading="lazy">
+              </div>
+              <p>道三公ほか斎藤家御位牌</p>
+            </li>
+            <li class="treasure-item">
+              <div class="treasure-photo">
+                <img src="assets/img/sekihi-dosan-kuyo-01.webp" alt="道三公供養碑" loading="lazy">
+              </div>
+              <p>道三公供養碑</p>
+            </li>
+            <li class="treasure-item">
+              <div class="treasure-photo">
+                <img src="assets/img/homotsu-shojirinne-01.webp" alt="生死輪廻図（笹山峻弘作）" loading="lazy">
+              </div>
+              <p>生死輪廻図（笹山 峻弘作）</p>
+            </li>
+            <li class="treasure-item">
+              <div class="treasure-photo">
+                <img src="assets/img/homotsu-tenji-01.webp" alt="NHK大河ドラマ関連資料「国盗り物語」" loading="lazy">
+              </div>
+              <p>NHK大河ドラマ関連資料「国盗り物語」（1973年）</p>
+            </li>
+          </ul>
+
           <p>1. 道三公印</p>
           <p>2. 道三公懐中本尊</p>
           <p>3. 道三公ほか斎藤家御位牌、道三公供養碑</p>
@@ -144,6 +218,7 @@
     <section id="saijoinari" class="section">
       <div class="section-content">
         <h2 class="section-title">最上稲荷</h2>
+        <img src="assets/img/hokora-01.webp" alt="最上稲荷の小祠" class="section-image">
         <div class="text-content">
           <p>最上位経王菩薩像</p>
         </div>
@@ -183,38 +258,6 @@
       </div>
     </section>
 
-    <!-- お参り・拝観 -->
-    <section id="visit" class="section">
-      <div class="section-content">
-        <h2 class="section-title">お参り・拝観</h2>
-        <img src="assets/img/hondo-yane-06.webp " alt="本堂屋根" class="section-image">
-
-        <div class="text-content">
-          <p>歴史好きな方に、初めて訪れる方にも ゆったりとした時間をお過ごしいただければと願っております。</p>
-          <p>常在寺は これからも この地で みなさまとの出会いを大切に祈りをつなげてまいります。</p>
-          <p>今日のご縁が明日のご縁へ</p>
-        </div>
-
-        <div class="info-grid">
-          <div class="info-item">
-            <h3>拝観時間</h3>
-            <p>10:00～16:00</p>
-          </div>
-          <div class="info-item">
-            <h3>拝観料</h3>
-            <p>大人200円　小人100円</p>
-          </div>
-          <div class="info-item">
-            <h3>御朱印</h3>
-            <p>500円</p>
-          </div>
-        </div>
-
-        <p class="visit-note">不定休<br>
-          ※寺院行事や法要により拝観できない場合があります。あらかじめご了承ください。</p>
-      </div>
-    </section>
-
     <!-- ご供養のご相談 -->
     <section id="consultation" class="section">
       <div class="section-content">
@@ -243,6 +286,23 @@
           <h3>所在地</h3>
           <p>岐阜県岐阜市梶川町9番地
           </p>
+        </div>
+
+        <div class="map-embed">
+          <iframe
+            src="https://maps.google.com/maps?q=35.4321671,136.7707536&z=17&output=embed"
+            title="常在寺の地図" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+          <a class="map-open-link"
+            href="https://www.google.com/maps/search/?api=1&query=%E5%B8%B8%E5%9C%A8%E5%AF%BA%20%E5%8F%82%E6%8B%9D%E8%80%85%E9%A7%90%E8%BB%8A%E5%A0%B4"
+            target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path
+                d="M12 2C7.6 2 4 5.6 4 10c0 5.4 7 11.4 7.3 11.6a1 1 0 0 0 1.4 0C13 21.4 20 15.4 20 10c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"
+                fill="currentColor" />
+            </svg>
+            常在寺 参拝者駐車場をGoogleマップで開く
+          </a>
         </div>
 
         <div class="access-info">
@@ -288,11 +348,46 @@
             <h3>お電話</h3>
             <p class="phone">058-263-6632</p>
           </div>
-          <div class="contact-method">
-            <h3>お問い合わせフォーム</h3>
-            <!-- Google フォームの URL 確定後、下の href に差し込む -->
-            <a href="#" class="button contact-form-button">お問い合わせフォームを開く</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 季節 -->
+    <section id="seasons" class="section">
+      <div class="section-content">
+        <div class="season-grid">
+          <div class="season-photo season-photo--haru">
+            <img src="assets/img/kisetsu-haru-02.webp" alt="枝垂れ桜と蝋梅" width="1110" height="1474" loading="lazy">
           </div>
+          <div class="season-photo season-photo--natsu">
+            <img src="assets/img/kisetsu-natsu-01.webp" alt="沙羅と本堂" width="1110" height="1474" loading="lazy">
+          </div>
+          <div class="season-photo season-photo--aki">
+            <img src="assets/img/kisetsu-aki-01.webp" alt="紅葉の金華山と岐阜城" width="720" height="960" loading="lazy">
+          </div>
+          <div class="season-photo season-photo--fuyu">
+            <img src="assets/img/kisetsu-fuyu-02.webp" alt="雪の金華山と屋根" width="900" height="1600" loading="lazy">
+          </div>
+
+          <div class="season-copy">
+            <p>春のやわらかな光</p>
+            <p>夏の深い緑</p>
+            <p>秋の彩り</p>
+            <p>冬の静けさ</p>
+            <p class="season-copy-note">その季節　その時間　その空間に</p>
+            <p class="season-copy-name">常在寺</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- クロージング -->
+    <section id="closing" class="section">
+      <div class="section-content">
+        <div class="text-content closing-copy">
+          <p>歴史は受け継ぎ未来へと</p>
+          <p>ご縁は育みつなぐもの</p>
+          <p class="closing-line">歴史をつなぎ　ここからはじまる物語</p>
         </div>
       </div>
     </section>
