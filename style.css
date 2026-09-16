@@ -63,10 +63,26 @@ body {
     gap: 0.75rem;
 }
 
-.temple-logo {
-    width: 2.5rem;
-    height: 2.5rem;
+.temple-crests {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
     flex-shrink: 0;
+}
+
+.temple-logo {
+    object-fit: contain;
+}
+
+.temple-logo--gosankiri {
+    width: 2.3rem;
+    height: 2.3rem;
+}
+
+.temple-logo--nitouha {
+    width: 1.4rem;
+    height: auto;
 }
 
 .temple-name-group {
@@ -75,10 +91,18 @@ body {
 }
 
 .temple-name {
-    font-size: 1.5rem;
     font-weight: 600;
     color: var(--c-gold);
     letter-spacing: 0.1em;
+}
+
+.temple-sango {
+    font-size: 1rem;
+}
+
+.temple-jigo {
+    font-size: 1.7rem;
+    margin-left: 0.15em;
 }
 
 .temple-subname {
@@ -152,34 +176,42 @@ body {
     left: 1.5rem;
     z-index: 2;
     margin: 0;
-    font-size: 1.4rem;
     font-weight: 600;
     color: #fff;
     letter-spacing: 0.15em;
     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7), 0 0 12px rgba(0, 0, 0, 0.4);
 }
 
-/* .hero-catch ── 縦書きキャッチを重ねる半透明の帯。768px未満は非表示 */
+.hero-title-sango {
+    font-size: 1rem;
+}
+
+.hero-title-jigo {
+    font-size: 1.6rem;
+}
+
+/* .hero-catch ── 縦書きキャッチを重ねる半透明の帯。狭い画面では文字とパディングを縮小して収める */
 .hero-catch {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 100%;
+    padding: 1rem 0.75rem;
+    background-color: rgba(20, 14, 14, 0.55);
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    animation: hero-catch-fade-in 1.2s ease-out;
 }
 
 @media (min-width: 768px) {
     .hero-catch {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         gap: 1.5rem;
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: 2;
-        height: 100%;
         padding: 2.5rem 1.5rem;
-        background-color: rgba(20, 14, 14, 0.55);
-        writing-mode: vertical-rl;
-        text-orientation: upright;
-        animation: hero-catch-fade-in 1.2s ease-out;
     }
 }
 
@@ -210,13 +242,24 @@ body {
 }
 
 .hero-catch-phrase {
-    font-size: 1.1rem;
-    line-height: 2;
+    font-size: 0.75rem;
+    line-height: 1.7;
 }
 
 .hero-catch-name {
-    font-size: 1.6rem;
+    font-size: 1.1rem;
     font-weight: 600;
+}
+
+@media (min-width: 768px) {
+    .hero-catch-phrase {
+        font-size: 1.1rem;
+        line-height: 2;
+    }
+
+    .hero-catch-name {
+        font-size: 1.6rem;
+    }
 }
 
 /* ========================================
@@ -795,8 +838,12 @@ body {
         font-size: 1.5rem;
     }
 
-    .temple-name {
-        font-size: 1.2rem;
+    .temple-sango {
+        font-size: 0.85rem;
+    }
+
+    .temple-jigo {
+        font-size: 1.35rem;
     }
 }
 
@@ -939,4 +986,21 @@ body {
 .closing-line {
     margin-top: 1.5rem !important;
     font-size: 1.1rem;
+}
+
+.closing-murals {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.closing-murals img {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    border: 1px solid var(--c-paper-deep);
+    box-shadow: 0 8px 24px rgba(36, 28, 21, 0.18);
 }
