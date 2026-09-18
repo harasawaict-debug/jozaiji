@@ -145,27 +145,131 @@ body {
     border-bottom-color: var(--c-gold);
 }
 
+/* .nav-button ── 768px以下でのみ表示するハンバーガーボタン。開閉自体はassets/js/nav.jsが
+   .is-open の付け外しとaria-expandedの書き換えで行い、見た目（棒→×）はCSS側で切り替える */
+.nav-button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.nav-button-icon {
+    position: relative;
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--c-cream);
+    transition: background-color 0.2s ease;
+}
+
+.nav-button-icon::before,
+.nav-button-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 2px;
+    background-color: var(--c-cream);
+    transition: transform 0.2s ease, top 0.2s ease;
+}
+
+.nav-button-icon::before {
+    top: -7px;
+}
+
+.nav-button-icon::after {
+    top: 7px;
+}
+
+.nav-button.is-open .nav-button-icon {
+    background-color: transparent;
+}
+
+.nav-button.is-open .nav-button-icon::before {
+    top: 0;
+    transform: rotate(45deg);
+}
+
+.nav-button.is-open .nav-button-icon::after {
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .nav-button-icon,
+    .nav-button-icon::before,
+    .nav-button-icon::after {
+        transition: none;
+    }
+}
+
 @media (max-width: 768px) {
     .header {
-        /* スマホでは貼り付きを解除。上へスクロールで普通に流れて消える */
-        position: static;
+        padding: 0.5rem 0;
+    }
+
+    .temple-logo--gosankiri {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+
+    .temple-logo--nitouha {
+        width: 1.1rem;
+    }
+
+    .temple-crests {
+        gap: 0.2rem;
+    }
+
+    .temple-jigo {
+        font-size: 1.3rem;
+    }
+
+    .temple-sango {
+        font-size: 0.8rem;
+    }
+
+    .temple-subname {
+        font-size: 0.65rem;
     }
 
     :root {
-        /* ヘッダーが貼り付かないので飛び先の余白は微量でよい */
-        --header-h: 16px;
+        /* 閉じた状態のヘッダー実測相当（約75px）に合わせる */
+        --header-h: 75px;
     }
 
-    .header-content {
-        flex-direction: column;
-        gap: 1rem;
+    .nav-button {
+        display: flex;
     }
 
+    /* 開いたメニューはヘッダー直下に重ねる。本文の位置は押し下げない */
     .nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem 1.5rem;
-        font-size: 0.9rem;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        gap: 0;
+        background-color: var(--c-accent);
+        padding: 0.5rem 2rem 1rem;
+    }
+
+    .nav-button.is-open+.nav {
+        display: flex;
+    }
+
+    .nav a {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     }
 }
 
