@@ -2,9 +2,10 @@ photos-original/
 CLAUDE.md
 常在寺_資料まとめ.md
 年中行事システム_仕様.md
+colors.html
 *.ps1
 docs/_preview/
-scripts/__pycache__/
+scripts/
 received/
 assets/img/*
 !assets/img/sanmon-01.webp

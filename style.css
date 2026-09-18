@@ -10,12 +10,19 @@
     --c-accent-deep: #6f2020;
     /* 濃蘇芳（ホバー・地色に使う濃い方） */
     --c-gold: #c9a75a;
+    /* 罫線・装飾用。文字色には使わない（蘇芳地の上で3.62:1しかないため） */
+    --c-gold-light: #e0c68a;
+    /* 蘇芳地の上に文字として載る金色はこちら（コントラスト比を確保） */
     --c-gold-deep: #9a7b3a;
     --c-ink: #241c15;
     --c-paper: #efe6d6;
     /* 生成り地 */
     --c-paper-deep: #e6dac6;
     --c-cream: #f6efe4;
+    --c-muted: #5f574e;
+    /* 補足テキスト用の低コントラスト色（#999/#888の代替。4.5:1以上を確保） */
+    --header-h: 128px;
+    /* .header の実測相当の高さ（padding + 内容の行の高さから算出）。PC幅は要実測・後日差し替え予定 */
 }
 
 * {
@@ -28,8 +35,14 @@ html {
     scroll-behavior: smooth;
 }
 
+/* .header が position: sticky のため、ページ内リンクの飛び先がヘッダーの裏に隠れないよう
+   セクション側に飛び先の余白（scroll-margin-top）を持たせる */
+section[id] {
+    scroll-margin-top: var(--header-h);
+}
+
 body {
-    font-family: 'Noto Serif JP', Georgia, serif;
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', YuMincho, 'MS PMincho', serif;
     line-height: 1.8;
     color: var(--c-ink);
     background-color: var(--c-paper);
@@ -92,7 +105,7 @@ body {
 
 .temple-name {
     font-weight: 600;
-    color: var(--c-gold);
+    color: var(--c-gold-light);
     letter-spacing: 0.1em;
 }
 
@@ -128,11 +141,21 @@ body {
 }
 
 .nav a:hover {
-    color: var(--c-gold);
+    color: var(--c-gold-light);
     border-bottom-color: var(--c-gold);
 }
 
 @media (max-width: 768px) {
+    .header {
+        /* スマホでは貼り付きを解除。上へスクロールで普通に流れて消える */
+        position: static;
+    }
+
+    :root {
+        /* ヘッダーが貼り付かないので飛び先の余白は微量でよい */
+        --header-h: 16px;
+    }
+
     .header-content {
         flex-direction: column;
         gap: 1rem;
@@ -301,7 +324,7 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.purpose-card h2 {
+.purpose-card h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
     color: var(--c-accent);
@@ -322,7 +345,7 @@ body {
     text-decoration: none;
     border: none;
     cursor: pointer;
-    font-family: 'Noto Serif JP', Georgia, serif;
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', YuMincho, 'MS PMincho', serif;
     font-size: 0.9rem;
     transition: background-color 0.3s ease;
 }
@@ -478,7 +501,7 @@ body {
 
 .cultural-asset-text .asset-reading {
     font-size: 0.85rem;
-    color: #888;
+    color: var(--c-muted);
     margin-bottom: 0.8rem;
 }
 
@@ -490,7 +513,7 @@ body {
 
 .cultural-asset-text .asset-provenance {
     font-size: 0.85rem;
-    color: #888;
+    color: var(--c-muted);
     margin-bottom: 1rem;
 }
 
@@ -528,7 +551,7 @@ body {
 #events-year {
     text-align: center;
     font-size: 1rem;
-    color: #999;
+    color: var(--c-muted);
     margin-bottom: 1.5rem;
 }
 
@@ -571,7 +594,7 @@ body {
 .event-reading {
     display: block;
     font-size: 0.8rem;
-    color: #999;
+    color: var(--c-muted);
     margin-top: 0.25rem;
 }
 
@@ -647,7 +670,7 @@ body {
 
 .contact-label {
     font-size: 0.9rem;
-    color: #999;
+    color: var(--c-muted);
     margin-bottom: 0.5rem;
 }
 
