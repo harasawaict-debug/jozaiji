@@ -915,6 +915,18 @@ body {
     padding-bottom: 0.5rem;
 }
 
+/* フォームカードの.buttonのみ中央寄せ（.buttonは他の場所でも使うため、ここだけに絞って上書き） */
+.contact-method .button {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+/* ボタン直下のただし書き。電話番号と受付時間帯の行間くらいの余白を空ける */
+.contact-method .button+p {
+    margin-top: 0.5rem;
+}
+
 .phone,
 .email {
     color: var(--c-accent);
