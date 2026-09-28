@@ -500,6 +500,25 @@ body {
     border: 1px solid var(--c-paper-deep);
 }
 
+/* .section-reading ── 見出し直下のふりがな。.asset-readingと同じ見た目で中央寄せ */
+.section-reading {
+    margin-top: -1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--c-muted);
+}
+
+/* .omamori-image ── 御守りの札が小さいので拡大せず控えめに置く */
+.omamori-image {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin: 2rem auto 0;
+    border: 1px solid var(--c-paper-deep);
+}
+
 .text-content {
     margin: 2rem 0;
     line-height: 2;
@@ -783,6 +802,62 @@ body {
     color: var(--c-accent);
     font-weight: 600;
     letter-spacing: 0.05em;
+}
+
+/* .grave-photo-hoto ── 合祀墓の宝塔。縦長なので幅を抑えて中央に置く */
+.grave-photo-hoto {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    margin: 2rem auto 1rem;
+    border: 1px solid var(--c-paper-deep);
+}
+
+/* .grave-photo-zenkei ── 納骨壇を含む全景。横長なので幅いっぱいに置く */
+.grave-photo-zenkei {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 2rem;
+    border: 1px solid var(--c-paper-deep);
+}
+
+.price-box {
+    background-color: var(--c-cream);
+    padding: 2rem;
+    border: 1px solid var(--c-paper-deep);
+    margin: 2rem 0;
+}
+
+.price-box h3 {
+    font-size: 1.1rem;
+    color: var(--c-ink);
+    margin-bottom: 0.75rem;
+}
+
+.price-box p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.price-box p:last-child {
+    margin-bottom: 0;
+}
+
+.price {
+    color: var(--c-accent);
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.price-note {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.85rem;
+    color: var(--c-muted);
+    font-weight: 400;
 }
 
 /* ========================================
