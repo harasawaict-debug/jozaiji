@@ -502,17 +502,26 @@ body {
     width: 100%;
 }
 
-.section-image {
+/* .section-image-frame ── 画像の縦横比ぶんの場所を読み込み前から確保する枠。
+   img自体をwidth:auto/height:autoで縮めると、読み込み前(自然サイズ不明)は
+   高さ2pxに潰れてから読み込み完了時に一気に広がってしまう(レイアウトのずれ)。
+   枠側にHTML属性由来のaspect-ratioを明示することで、画像が届く前から
+   幅・高さどちらの上限に先に当たるかを確定できる */
+.section-image-frame {
     width: auto;
     max-width: min(800px, 100%);
-    height: auto;
-    /* 縦長の写真が伸びすぎないよう高さにも上限を置く。
-       width/heightともautoにすることで、幅・高さどちらの上限に先に当たっても
-       縦横比を保ったまま縮む(width:100%だと幅が先に確定し歪む) */
     max-height: 560px;
-    display: block;
     margin: 2rem auto;
     border: 1px solid var(--c-paper-deep);
+    overflow: hidden;
+    display: block;
+}
+
+.section-image-frame .section-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* .section-figure ── .section-imageとキャプションをひとまとめにし、
