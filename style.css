@@ -680,6 +680,21 @@ body {
     margin: 0 auto;
 }
 
+/* スマホでは.main-contentの左右paddingを打ち消して画面幅いっぱいに広げる */
+@media (max-width: 768px) {
+    .keidai-map-image {
+        margin-left: -2rem;
+        margin-right: -2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .keidai-map-image {
+        margin-left: -1rem;
+        margin-right: -1rem;
+    }
+}
+
 .keidai-map-image img {
     display: block;
     width: 100%;
