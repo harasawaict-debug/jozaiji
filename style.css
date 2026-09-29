@@ -496,9 +496,13 @@ body {
 }
 
 .section-image {
-    width: 100%;
-    max-width: 800px;
+    width: auto;
+    max-width: min(800px, 100%);
     height: auto;
+    /* 縦長の写真が伸びすぎないよう高さにも上限を置く。
+       width/heightともautoにすることで、幅・高さどちらの上限に先に当たっても
+       縦横比を保ったまま縮む(width:100%だと幅が先に確定し歪む) */
+    max-height: 560px;
     display: block;
     margin: 2rem auto;
     border: 1px solid var(--c-paper-deep);
