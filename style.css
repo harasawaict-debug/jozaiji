@@ -213,16 +213,20 @@ body {
 
 @media (max-width: 768px) {
     .header {
-        padding: 0.5rem 0;
+        padding: 0.35rem 0;
+    }
+
+    .temple-identity {
+        gap: 0.4rem;
     }
 
     .temple-logo--gosankiri {
-        width: 1.8rem;
-        height: 1.8rem;
+        width: 1.4rem;
+        height: 1.4rem;
     }
 
     .temple-logo--nitouha {
-        width: 1.1rem;
+        width: 0.85rem;
     }
 
     .temple-crests {
@@ -230,20 +234,23 @@ body {
     }
 
     .temple-jigo {
-        font-size: 1.3rem;
+        font-size: 1.05rem;
     }
 
     .temple-sango {
-        font-size: 0.8rem;
+        font-size: 0.65rem;
     }
 
     .temple-subname {
         font-size: 0.65rem;
+        /* bodyの1.8を継承すると1行だけなのに行間が無駄に空く */
+        line-height: 1.2;
+        margin-top: 0.05rem;
     }
 
     :root {
-        /* 閉じた状態のヘッダー実測相当（約75px）に合わせる */
-        --header-h: 75px;
+        /* 閉じた状態のヘッダー実測値（Playwrightで320〜768px確認、4幅とも55.19px） */
+        --header-h: 55px;
     }
 
     .nav-button {
@@ -1179,14 +1186,6 @@ body {
 
     .section-title {
         font-size: 1.5rem;
-    }
-
-    .temple-sango {
-        font-size: 0.85rem;
-    }
-
-    .temple-jigo {
-        font-size: 1.35rem;
     }
 }
 
