@@ -508,6 +508,19 @@ body {
     border: 1px solid var(--c-paper-deep);
 }
 
+/* .section-figure ── .section-imageとキャプションをひとまとめにし、
+   キャプションの幅を写真の実際の表示幅(縦長なら細くなる)に揃える */
+.section-figure {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.section-figure figcaption {
+    text-align: center;
+    color: #555;
+    font-size: 1rem;
+}
+
 /* .section-reading ── 見出し直下のふりがな。.asset-readingと同じ見た目で中央寄せ */
 .section-reading {
     margin-top: -1.5rem;
@@ -528,8 +541,21 @@ body {
 }
 
 .text-content {
-    margin: 2rem 0;
+    margin: 2rem auto;
+    /* 1行を日本語の読みやすい長さに収める */
+    max-width: 40em;
     line-height: 2;
+    /* 単語の途中や1文字だけの改行を避ける */
+    text-wrap: pretty;
+}
+
+
+/* 什宝の写真グリッドは.text-contentで囲われているが本文ではないため、
+   40emには収めない(グリッドが不自然に狭まるのを防ぐ) */
+#cultural-assets .text-content,
+#kaiunden .text-content {
+    max-width: none;
+    margin: 2rem 0;
 }
 
 .text-content p {
@@ -678,21 +704,6 @@ body {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
-}
-
-/* スマホでは.main-contentの左右paddingを打ち消して画面幅いっぱいに広げる */
-@media (max-width: 768px) {
-    .keidai-map-image {
-        margin-left: -2rem;
-        margin-right: -2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .keidai-map-image {
-        margin-left: -1rem;
-        margin-right: -1rem;
-    }
 }
 
 .keidai-map-image img {
