@@ -664,6 +664,101 @@ body {
     margin-top: 1.5rem;
 }
 
+/* .keidai-map ── 境内配置図。ラベルは画像に重ねる(.keidai-map-image参照) */
+.keidai-map {
+    margin: 2rem 0 0;
+}
+
+/* .keidai-map-image ── ラベルを画像に重ねる。position: relative が重なりの基準になる */
+.keidai-map-image {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.keidai-map-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* .keidai-label ── 座標は style 属性で個別に指定。transform で中心を座標に合わせる */
+.keidai-label {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 0.2em 0.6em;
+    background: rgba(246, 239, 228, 0.88);
+    border: 1px solid var(--c-paper-deep);
+    border-radius: 2px;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    white-space: nowrap;
+    color: var(--c-ink);
+}
+
+/* 右端のラベルは中心合わせだとはみ出すので、右端を座標に合わせる */
+.keidai-label--right {
+    transform: translate(-100%, -50%);
+}
+
+/* .keidai-label--pointer ── 吹き出しの先端。ラベルの右上から朱色の建物へ向ける。
+   ::before が枠線の色、::after が背景色。2枚を1〜2pxずらして重ね、線のある三角形にする */
+.keidai-label--pointer::before,
+.keidai-label--pointer::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    transform: rotate(18deg);
+    transform-origin: 50% 100%;
+}
+
+.keidai-label--pointer::before {
+    right: 12px;
+    top: -11px;
+    border-bottom: 11px solid var(--c-paper-deep);
+}
+
+.keidai-label--pointer::after {
+    right: 12px;
+    top: -9px;
+    border-bottom: 10px solid rgba(246, 239, 228, 0.88);
+}
+
+@media (max-width: 480px) {
+    .keidai-label {
+        font-size: 0.85rem;
+        padding: 0.1em 0.35em;
+    }
+
+    .keidai-label--pointer::before,
+    .keidai-label--pointer::after {
+        border-left-width: 5px;
+        border-right-width: 5px;
+    }
+
+    .keidai-label--pointer::before {
+        right: 8px;
+        top: -8px;
+        border-bottom-width: 8px;
+    }
+
+    .keidai-label--pointer::after {
+        right: 8px;
+        top: -7px;
+        border-bottom-width: 7px;
+    }
+}
+
+.keidai-map figcaption {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+}
+
 .asset-note {
     font-size: 0.85rem;
     color: #666;
