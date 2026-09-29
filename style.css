@@ -250,15 +250,17 @@ body {
         display: flex;
     }
 
-    /* 開いたメニューはヘッダー直下に重ねる。本文の位置は押し下げない */
+    /* 開いたメニューはヘッダー直下に重ねる。本文の位置は押し下げない。
+       縦積みにすると6項目でヘッダーが高くなりすぎるため、折り返し方式にする */
     .nav {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        flex-direction: column;
-        gap: 0;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem 1.25rem;
         background-color: var(--c-accent);
         padding: 0.5rem 2rem 1rem;
     }
