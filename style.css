@@ -696,7 +696,8 @@ body {
 }
 
 @media (max-width: 768px) {
-    .cultural-asset-item {
+    .cultural-asset-item,
+    .cultural-asset-item:has(.cultural-asset-image) {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
